@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CT Slice Viewer</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 16px; }
+    .controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    img { max-width: 100%; height: auto; background: #111; display: block; }
+    .meta { color: #444; font-size: 14px; }
+    input[type="range"] { width: min(720px, 92vw); }
+    button { padding: 6px 10px; }
+  </style>
+</head>
+<body>
+  <h1>CT Slice Viewer</h1>
+
+  <div class="controls">
+    <label>
+      Patient:
+      <select id="patient"></select>
+    </label>
+
+    <label>
+      Direction:
+      <select id="dir">
+        <option value="slice_x">X</option>
+        <option value="slice_y">Y</option>
+        <option value="slice_z">Z</option>
+      </select>
+    </label>
+
+    <label>
+      Slice:
+      <input id="slice" type="range" min="1" max="480" value="1" />
+    </label>
+
+    <span id="label" class="meta"></span>
+
+    <button id="prev">◀</button>
+    <button id="next">▶</button>
+  </div>
+
+  <p id="status" class="meta"></p>
+  <img id="img" alt="CT slice" />
+
+  <script src="viewer.js"></script>
+</body>
+</html>
