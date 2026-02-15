@@ -19,7 +19,7 @@ function pad(n, digits) {
 
 function buildUrl(patientId, dir, sliceIndex1Based) {
   // pid_001/slice_x/slice_001.png
-  return `${patientId}/${dir}/slice_${pad(sliceIndex1Based, PAD)}.${EXT}`;
+  return `${patientId}/${dir}/slice_${pad(sliceIndex1Based - 1, PAD)}.${EXT}`;
 }
 
 function setStatus(msg) {
