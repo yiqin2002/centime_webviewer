@@ -1,4 +1,4 @@
-const SLICE_COUNT = 480;      // fixed per direction
+const SLICE_COUNT = 3;      // fixed per direction
 const PAD = 3;               // slice_001.png => 3 digits
 const EXT = "png";           // slice_001.png
 
