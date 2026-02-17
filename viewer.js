@@ -50,7 +50,7 @@ function loadSlice() {
   const s = parseInt(els.slice.value, 10);
 
   const url = buildUrl(patientId, dir, s);
-  els.label.textContent = `${patientId} • ${dir} • slice ${s}/${SLICE_COUNT - 1}`;
+  els.label.textContent = `${patientId} • ${dir} • slice ${s + 1}/${SLICE_COUNT}`;
   setUrlFromState();
 
   setStatus(`Loading: ${url}`);
