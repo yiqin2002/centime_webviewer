@@ -19,7 +19,7 @@ function pad(n, digits) {
 
 function buildUrl(patientId, dir, sliceIndex1Based) {
   // pid_001/slices_x/slice_001.png
-  return `${patientId}/${dir}/slice_${pad(sliceIndex1Based - 1, PAD)}.${EXT}`;
+  return `${patientId}/${dir}/slice_${pad(sliceIndex1Based, PAD)}.${EXT}`;
 }
 
 function setStatus(msg) {
@@ -49,7 +49,7 @@ function loadSlice() {
   const s = parseInt(els.slice.value, 10);
 
   const url = buildUrl(patientId, dir, s);
-  els.label.textContent = `${patientId} • ${dir} • slice ${s}/${SLICE_COUNT}`;
+  els.label.textContent = `${patientId} • ${dir} • slice ${s}/${SLICE_COUNT - 1}`;
   setUrlFromState();
 
   // preload so missing files don't break the main <img>
@@ -67,14 +67,14 @@ function loadSlice() {
 }
 
 function preloadNeighbor(patientId, dir, s) {
-  if (s < 1 || s > SLICE_COUNT) return;
+  if (s < 0 || s > SLICE_COUNT - 1) return;
   const url = buildUrl(patientId, dir, s);
   const im = new Image();
   im.src = url;
 }
 
 function step(delta) {
-  const next = Math.max(1, Math.min(SLICE_COUNT, parseInt(els.slice.value, 10) + delta));
+  const next = Math.max(0, Math.min(SLICE_COUNT - 1, parseInt(els.slice.value, 10) + delta));
   els.slice.value = String(next);
   loadSlice();
 }
@@ -103,8 +103,8 @@ async function initPatients() {
 }
 
 async function init() {
-  els.slice.min = "1";
-  els.slice.max = String(SLICE_COUNT);
+  els.slice.min = "0";
+  els.slice.max = String(SLICE_COUNT - 1);
   els.slice.step = "1";
 
   await initPatients();
