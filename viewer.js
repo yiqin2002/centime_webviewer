@@ -1,6 +1,7 @@
+// viewer.js
 const SLICE_COUNT = 480;      // fixed per direction
-const PAD = 3;               // slice_001.png => 3 digits
-const EXT = "png";           // slice_001.png
+const PAD = 3;               // slice_000.png => 3 digits
+const EXT = "png";           // slice_000.png
 
 const els = {
   patient: document.getElementById("patient"),
@@ -17,9 +18,9 @@ function pad(n, digits) {
   return String(n).padStart(digits, "0");
 }
 
-function buildUrl(patientId, dir, sliceIndex1Based) {
-  // pid_001/slices_x/slice_001.png
-  return `${patientId}/${dir}/slice_${pad(sliceIndex1Based, PAD)}.${EXT}`;
+function buildUrl(patientId, dir, sliceIndex0Based) {
+  // pid_001/slices_x/slice_000.png
+  return `${patientId}/${dir}/slice_${pad(sliceIndex0Based, PAD)}.${EXT}`;
 }
 
 function setStatus(msg) {
@@ -52,13 +53,11 @@ function loadSlice() {
   els.label.textContent = `${patientId} • ${dir} • slice ${s}/${SLICE_COUNT - 1}`;
   setUrlFromState();
 
-  // preload so missing files don't break the main <img>
   setStatus(`Loading: ${url}`);
   const im = new Image();
   im.onload = () => {
     els.img.src = url;
     setStatus("");
-    // Preload neighbors for smoother stepping
     preloadNeighbor(patientId, dir, s - 1);
     preloadNeighbor(patientId, dir, s + 1);
   };
@@ -99,7 +98,9 @@ async function initPatients() {
   const st = getStateFromUrl();
   if (st.patient && list.includes(st.patient)) els.patient.value = st.patient;
   if (st.dir) els.dir.value = st.dir;
-  if (st.slice && st.slice >= 1 && st.slice <= SLICE_COUNT) els.slice.value = String(st.slice);
+  if (Number.isInteger(st.slice) && st.slice >= 0 && st.slice <= SLICE_COUNT - 1) {
+    els.slice.value = String(st.slice);
+  }
 }
 
 async function init() {
