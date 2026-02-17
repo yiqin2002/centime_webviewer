@@ -49,7 +49,7 @@ function loadSlice() {
   const s = parseInt(els.slice.value, 10);
 
   const url = buildUrl(patientId, dir, s);
-  els.label.textContent = `${patientId} • ${dir} • slices ${s}/${SLICE_COUNT}`;
+  els.label.textContent = `${patientId} • ${dir} • slice ${s}/${SLICE_COUNT}`;
   setUrlFromState();
 
   // preload so missing files don't break the main <img>
