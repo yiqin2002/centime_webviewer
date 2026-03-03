@@ -12,6 +12,22 @@
     .meta { color: #444; font-size: 14px; }
     input[type="range"] { width: min(720px, 92vw); }
     button { padding: 6px 10px; }
+    .card {
+      margin-top: 12px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      max-width: 980px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .kv { padding: 8px; background: #fafafa; border: 1px solid #eee; border-radius: 8px; }
+    .k { font-size: 12px; color: #666; }
+    .v { font-size: 14px; font-weight: 600; margin-top: 2px; word-break: break-word; }
   </style>
 </head>
 <body>
@@ -41,6 +57,24 @@
 
     <button id="prev">◀</button>
     <button id="next">▶</button>
+  </div>
+
+  <div class="card">
+    <div class="meta">Clinical features</div>
+    <div class="grid">
+      <div class="kv">
+        <div class="k">Patient ID</div>
+        <div class="v" id="feat-id">—</div>
+      </div>
+      <div class="kv">
+        <div class="k">Censored</div>
+        <div class="v" id="feat-censored">—</div>
+      </div>
+      <div class="kv">
+        <div class="k">Time to event</div>
+        <div class="v" id="feat-tti">—</div>
+      </div>
+    </div>
   </div>
 
   <p id="status" class="meta"></p>

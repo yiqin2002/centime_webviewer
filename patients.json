@@ -1,3 +1,18 @@
 {
-  "patients": ["pid_003", "pid_543024"]
+  "patients": [
+    {
+      "id": "pid_003",
+      "folder": "pid_003",
+      "censored": true,
+      "time_to_event": 184,
+      "time_unit": "months"
+    },
+    {
+      "id": "pid_543024",
+      "folder": "pid_543024",
+      "censored": false,
+      "time_to_event": 32,
+      "time_unit": "months"
+    }
+  ]
 }
