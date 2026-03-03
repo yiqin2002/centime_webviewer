@@ -39,7 +39,7 @@ function pad(n, digits) {
 
 function buildUrl(patientFolder, dir, sliceIndex0Based) {
   // <folder>/slices_x/slice_000.png
-  return `${patientFolder}/${dir}/slice_${pad(sliceIndex0Based, PAD)}.${EXT}`;
+  return `scan/${patientFolder}/${dir}/slice_${pad(sliceIndex0Based, PAD)}.${EXT}`;
 }
 
 function setStatus(msg) {

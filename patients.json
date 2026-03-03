@@ -1,17 +1,24 @@
 {
   "patients": [
     {
-      "id": "pid_003",
-      "folder": "pid_003",
-      "censored": true,
-      "time_to_event": 184,
+      "id": "pid_739214",
+      "folder": "uncens_time_9.0_pid_739214_1",
+      "censored": false,
+      "time_to_event": 9,
       "time_unit": "months"
     },
     {
       "id": "pid_543024",
-      "folder": "pid_543024",
+      "folder": "uncens_time_15.0_pid_543024_1",
       "censored": false,
-      "time_to_event": 32,
+      "time_to_event": 15,
+      "time_unit": "months"
+    },
+    {
+      "id": "pid_731598",
+      "folder": "uncens_time_20.0_pid_731598_0",
+      "censored": false,
+      "time_to_event": 20,
       "time_unit": "months"
     }
   ]
