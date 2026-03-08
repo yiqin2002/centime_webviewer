@@ -33,6 +33,16 @@ const els = {
   featTTI: document.getElementById("feat-tti"),
 };
 
+function debounce(func, delay) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), delay);
+  };
+}
+
+const debouncedLoadSlice = debounce(loadSlice, 120);
+
 function pad(n, digits) {
   return String(n).padStart(digits, "0");
 }
@@ -169,7 +179,12 @@ async function init() {
 
   els.patient.addEventListener("change", loadSlice);
   els.dir.addEventListener("change", loadSlice);
-  els.slice.addEventListener("input", loadSlice);
+  els.slice.addEventListener("input", debouncedLoadSlice);
+  els.slice.addEventListener("change", loadSlice);
+  els.slice.addEventListener("input", () => {
+    const s = els.slice.value;
+    els.label.textContent = `slice ${s}/${SLICE_COUNT - 1}`;
+  });
   els.prev.addEventListener("click", () => step(-1));
   els.next.addEventListener("click", () => step(+1));
 
