@@ -117,8 +117,8 @@ function loadSlice() {
   im.onload = () => {
     els.img.src = url;
     setStatus("");
-    preloadNeighbor(p.folder, dir, s - 1);
-    preloadNeighbor(p.folder, dir, s + 1);
+    // preloadNeighbor(p.folder, dir, s - 1);
+    // preloadNeighbor(p.folder, dir, s + 1);
   };
   im.onerror = () => setStatus(`Failed to load: ${url}`);
   im.src = url;
