@@ -1,23 +1,10 @@
 // viewer.js
-const SLICE_COUNT = 480; // fixed per direction
-const PAD = 3;           // slice_000.png => 3 digits
-const EXT = "png";       // slice_000.png
+const SLICE_COUNT = 480;
+const PAD = 3;
+const EXT = "png";
 
-/**
- * patients.json format (example):
- * {
- *   "patients": [
- *     {
- *       "id": "P00123",
- *       "folder": "Case_12A__P00123",
- *       "censored": true,
- *       "time_to_event": 184,
- *       "time_unit": "days"
- *     }
- *   ]
- * }
- */
-let patients = []; // array of patient objects
+let patients = [];
+let latestRequestId = 0;
 
 const els = {
   patient: document.getElementById("patient"),
@@ -41,14 +28,11 @@ function debounce(func, delay) {
   };
 }
 
-const debouncedLoadSlice = debounce(loadSlice, 120);
-
 function pad(n, digits) {
   return String(n).padStart(digits, "0");
 }
 
 function buildUrl(patientFolder, dir, sliceIndex0Based) {
-  // <folder>/slices_x/slice_000.png
   return `scan/${patientFolder}/${dir}/slice_${pad(sliceIndex0Based, PAD)}.${EXT}`;
 }
 
@@ -59,7 +43,7 @@ function setStatus(msg) {
 function getStateFromUrl() {
   const p = new URLSearchParams(location.search);
   return {
-    patientKey: p.get("p"), // we'll store patient "id" in URL
+    patientKey: p.get("p"),
     dir: p.get("d"),
     slice: p.get("s") ? parseInt(p.get("s"), 10) : null,
   };
@@ -100,11 +84,11 @@ function renderClinicalFeatures(p) {
   }
 }
 
-function preloadNeighbor(patientFolder, dir, s) {
-  if (s < 0 || s > SLICE_COUNT - 1) return;
-  const url = buildUrl(patientFolder, dir, s);
-  const im = new Image();
-  im.src = url;
+function updateLabel() {
+  const p = getSelectedPatient();
+  const s = els.slice.value;
+  const dir = els.dir.value;
+  els.label.textContent = `${p?.id ?? "—"} • ${dir} • slice ${s}/${SLICE_COUNT - 1}`;
 }
 
 function loadSlice() {
@@ -116,27 +100,33 @@ function loadSlice() {
 
   const dir = els.dir.value;
   const s = parseInt(els.slice.value, 10);
-
   const url = buildUrl(p.folder, dir, s);
-  els.label.textContent = `${p.id} • ${dir} • slice ${s}/${SLICE_COUNT - 1}`;
+  const requestId = ++latestRequestId;
+
+  updateLabel();
   renderClinicalFeatures(p);
   setUrlFromState();
 
   setStatus(`Loading: ${url}`);
   const im = new Image();
   im.onload = () => {
+    if (requestId !== latestRequestId) return;
     els.img.src = url;
     setStatus("");
-    // preloadNeighbor(p.folder, dir, s - 1);
-    // preloadNeighbor(p.folder, dir, s + 1);
   };
-  im.onerror = () => setStatus(`Failed to load: ${url}`);
+  im.onerror = () => {
+    if (requestId !== latestRequestId) return;
+    setStatus(`Failed to load: ${url}`);
+  };
   im.src = url;
 }
+
+const debouncedLoadSlice = debounce(loadSlice, 120);
 
 function step(delta) {
   const next = Math.max(0, Math.min(SLICE_COUNT - 1, parseInt(els.slice.value, 10) + delta));
   els.slice.value = String(next);
+  updateLabel();
   loadSlice();
 }
 
@@ -148,7 +138,6 @@ async function initPatients() {
   patients = Array.isArray(data.patients) ? data.patients : [];
   if (!patients.length) throw new Error("patients.json has no patients.");
 
-  // Populate dropdown (value is index; label shows patient id)
   els.patient.innerHTML = "";
   patients.forEach((p, i) => {
     const opt = document.createElement("option");
@@ -157,7 +146,6 @@ async function initPatients() {
     els.patient.appendChild(opt);
   });
 
-  // Apply state from URL if present (p = patient id)
   const st = getStateFromUrl();
   if (st.patientKey) {
     const idx = patients.findIndex(x => x.id === st.patientKey);
@@ -175,26 +163,34 @@ async function init() {
   els.slice.step = "1";
 
   await initPatients();
+  updateLabel();
   loadSlice();
 
-  els.patient.addEventListener("change", loadSlice);
-  els.dir.addEventListener("change", loadSlice);
-  els.slice.addEventListener("input", debouncedLoadSlice);
-  els.slice.addEventListener("change", loadSlice);
-  els.slice.addEventListener("input", () => {
-    const s = els.slice.value;
-    els.label.textContent = `slice ${s}/${SLICE_COUNT - 1}`;
+  els.patient.addEventListener("change", () => {
+    updateLabel();
+    loadSlice();
   });
+
+  els.dir.addEventListener("change", () => {
+    updateLabel();
+    loadSlice();
+  });
+
+  els.slice.addEventListener("input", () => {
+    updateLabel();
+    debouncedLoadSlice();
+  });
+
+  els.slice.addEventListener("change", loadSlice);
+
   els.prev.addEventListener("click", () => step(-1));
   els.next.addEventListener("click", () => step(+1));
 
-  // keyboard
   window.addEventListener("keydown", (e) => {
     if (e.key === "ArrowLeft" || e.key === "a") step(-1);
     if (e.key === "ArrowRight" || e.key === "d") step(+1);
   });
 
-  // mouse wheel scroll through slices
   let wheelAccum = 0;
   window.addEventListener("wheel", (e) => {
     wheelAccum += e.deltaY;
