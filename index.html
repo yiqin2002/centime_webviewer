@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CT Slice Viewer</title>
+
   <style>
     body {
       font-family: system-ui, sans-serif;
@@ -72,12 +73,6 @@
       align-items: start;
     }
 
-    .image-panel {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
     .image-panel img {
       width: 100%;
       height: auto;
@@ -93,70 +88,85 @@
     }
   </style>
 </head>
+
 <body>
-  <h1>CT Slice Viewer</h1>
 
-  <div class="controls">
-    <label>
-      Patient:
-      <select id="patient"></select>
-    </label>
+<h1>CT Slice Viewer</h1>
 
-    <label>
-      Direction:
-      <select id="dir">
-        <option value="slices_x">X</option>
-        <option value="slices_y">Y</option>
-        <option value="slices_z">Z</option>
-      </select>
-    </label>
+<div class="controls">
 
-    <label>
-      Slice:
-      <input id="slice" type="range" min="0" max="479" value="0" />
-    </label>
+  <label>
+    Patient:
+    <select id="patient"></select>
+  </label>
 
-    <span id="label" class="meta"></span>
+  <label>
+    Direction:
+    <select id="dir">
+      <option value="slices_x">X</option>
+      <option value="slices_y">Y</option>
+      <option value="slices_z">Z</option>
+    </select>
+  </label>
 
-    <button id="prev">◀</button>
-    <button id="next">▶</button>
+  <label>
+    Slice:
+    <input id="slice" type="range" min="0" max="479" value="0">
+  </label>
+
+  <span id="label" class="meta"></span>
+
+  <button id="prev">◀</button>
+  <button id="next">▶</button>
+
+</div>
+
+
+<div class="card">
+  <div class="meta">Clinical features</div>
+
+  <div class="grid">
+
+    <div class="kv">
+      <div class="k">Patient ID</div>
+      <div class="v" id="feat-id">—</div>
+    </div>
+
+    <div class="kv">
+      <div class="k">Censored</div>
+      <div class="v" id="feat-censored">—</div>
+    </div>
+
+    <div class="kv">
+      <div class="k">Time to event</div>
+      <div class="v" id="feat-tti">—</div>
+    </div>
+
+  </div>
+</div>
+
+
+<p id="status" class="meta"></p>
+
+
+<div class="image-row">
+
+  <div class="image-panel">
+    <img id="img1" alt="method 1">
   </div>
 
-  <div class="card">
-    <div class="meta">Clinical features</div>
-    <div class="grid">
-      <div class="kv">
-        <div class="k">Patient ID</div>
-        <div class="v" id="feat-id">—</div>
-      </div>
-      <div class="kv">
-        <div class="k">Censored</div>
-        <div class="v" id="feat-censored">—</div>
-      </div>
-      <div class="kv">
-        <div class="k">Time to event</div>
-        <div class="v" id="feat-tti">—</div>
-      </div>
-    </div>
+  <div class="image-panel">
+    <img id="img2" alt="method 2">
   </div>
 
-  <p id="status" class="meta"></p>
-
-  <div class="image-row">
-    <div class="image-panel">
-      <div class="meta">method_1</div>
-      <img id="img1" alt="CT slice method 1" />
-    </div>
-    <div class="image-panel">
-      <div class="meta">method_2</div>
-      <img id="img2" alt="CT slice method 2" />
-    </div>
-    <div class="image-panel">
-      <div class="meta">method_3</div>
-      <img id="img3" alt="CT slice method 3" />
-    </div>
+  <div class="image-panel">
+    <img id="img3" alt="method 3">
   </div>
 
-  <script src="viewer.js"></script>
+</div>
+
+
+<script src="viewer.js"></script>
+
 </body>
 </html>
