@@ -5,14 +5,16 @@
       "folder": "uncens_time_15.0_pid_543024_1",
       "censored": false,
       "time_to_event": 15,
-      "time_unit": "months"
+      "time_unit": "months",
+      "methods": ["ct", "eigencam", "centime"]
     },
     {
       "id": "pid_731598",
       "folder": "uncens_time_20.0_pid_731598_0",
       "censored": false,
       "time_to_event": 20,
-      "time_unit": "months"
+      "time_unit": "months",
+      "methods": ["ct", "centime", "eigencam"]
     }
   ]
 }

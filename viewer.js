@@ -1,7 +1,7 @@
 const SLICE_COUNT = 480;
 const PAD = 3;
 const EXT = "png";
-const METHODS = ["ct", "centime", "eigencam"];
+const DEFAULT_METHODS = ["method_1", "method_2", "method_3"];
 
 let patients = [];
 let latestRequestId = 0;
@@ -65,6 +65,13 @@ function getSelectedPatient() {
   return patients[idx] || null;
 }
 
+function getPatientMethods(p) {
+  if (Array.isArray(p?.methods) && p.methods.length > 0) {
+    return p.methods;
+  }
+  return DEFAULT_METHODS;
+}
+
 function renderClinicalFeatures(p) {
   if (!p) {
     els.featId.textContent = "—";
@@ -118,30 +125,34 @@ async function loadSlice() {
 
   const dir = els.dir.value;
   const s = parseInt(els.slice.value, 10);
+  const methods = getPatientMethods(p);
   const requestId = ++latestRequestId;
 
   updateLabel();
   renderClinicalFeatures(p);
   setUrlFromState();
 
-  const urls = METHODS.map((method) => buildUrl(p.folder, dir, method, s));
-  setStatus(`Loading slice ${s} for ${METHODS.join(", ")}...`);
+  const urls = methods.map((method) => buildUrl(p.folder, dir, method, s));
+  setStatus(`Loading slice ${s}...`);
 
   const results = await Promise.all(urls.map(loadImage));
 
   if (requestId !== latestRequestId) return;
 
   const imgEls = [els.img1, els.img2, els.img3];
-  let failed = 0;
 
-  results.forEach((result, i) => {
-    if (result.ok) {
-      imgEls[i].src = result.url;
+  imgEls.forEach((imgEl) => imgEl.removeAttribute("src"));
+
+  let failed = 0;
+  const maxPanels = Math.min(imgEls.length, results.length);
+
+  for (let i = 0; i < maxPanels; i++) {
+    if (results[i].ok) {
+      imgEls[i].src = results[i].url;
     } else {
-      imgEls[i].removeAttribute("src");
       failed += 1;
     }
-  });
+  }
 
   if (failed === 0) {
     setStatus("");
