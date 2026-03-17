@@ -1,7 +1,7 @@
 const SLICE_COUNT = 480;
 const PAD = 3;
 const EXT = "png";
-const DEFAULT_METHODS = ["method_1", "method_2", "method_3"];
+const DEFAULT_METHODS = ["ct", "centime", "eigencam"];
 
 let patients = [];
 let latestRequestId = 0;
