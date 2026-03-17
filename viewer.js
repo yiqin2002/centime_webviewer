@@ -1,7 +1,7 @@
-// viewer.js
 const SLICE_COUNT = 480;
 const PAD = 3;
 const EXT = "png";
+const METHODS = ["method_1", "method_2", "method_3"];
 
 let patients = [];
 let latestRequestId = 0;
@@ -10,7 +10,9 @@ const els = {
   patient: document.getElementById("patient"),
   dir: document.getElementById("dir"),
   slice: document.getElementById("slice"),
-  img: document.getElementById("img"),
+  img1: document.getElementById("img1"),
+  img2: document.getElementById("img2"),
+  img3: document.getElementById("img3"),
   status: document.getElementById("status"),
   label: document.getElementById("label"),
   prev: document.getElementById("prev"),
@@ -32,8 +34,8 @@ function pad(n, digits) {
   return String(n).padStart(digits, "0");
 }
 
-function buildUrl(patientFolder, dir, sliceIndex0Based) {
-  return `scan/${patientFolder}/${dir}/slice_${pad(sliceIndex0Based, PAD)}.${EXT}`;
+function buildUrl(patientFolder, dir, method, sliceIndex0Based) {
+  return `scan/${patientFolder}/${dir}/${method}/slice_${pad(sliceIndex0Based, PAD)}.${EXT}`;
 }
 
 function setStatus(msg) {
@@ -91,40 +93,70 @@ function updateLabel() {
   els.label.textContent = `${p?.id ?? "—"} • ${dir} • slice ${s}/${SLICE_COUNT - 1}`;
 }
 
-function loadSlice() {
+function clearImages() {
+  els.img1.removeAttribute("src");
+  els.img2.removeAttribute("src");
+  els.img3.removeAttribute("src");
+}
+
+function loadImage(url) {
+  return new Promise((resolve) => {
+    const im = new Image();
+    im.onload = () => resolve({ ok: true, url });
+    im.onerror = () => resolve({ ok: false, url });
+    im.src = url;
+  });
+}
+
+async function loadSlice() {
   const p = getSelectedPatient();
   if (!p) {
     setStatus("No patient selected.");
+    clearImages();
     return;
   }
 
   const dir = els.dir.value;
   const s = parseInt(els.slice.value, 10);
-  const url = buildUrl(p.folder, dir, s);
   const requestId = ++latestRequestId;
 
   updateLabel();
   renderClinicalFeatures(p);
   setUrlFromState();
 
-  setStatus(`Loading: ${url}`);
-  const im = new Image();
-  im.onload = () => {
-    if (requestId !== latestRequestId) return;
-    els.img.src = url;
+  const urls = METHODS.map((method) => buildUrl(p.folder, dir, method, s));
+  setStatus(`Loading slice ${s} for ${METHODS.join(", ")}...`);
+
+  const results = await Promise.all(urls.map(loadImage));
+
+  if (requestId !== latestRequestId) return;
+
+  const imgEls = [els.img1, els.img2, els.img3];
+  let failed = 0;
+
+  results.forEach((result, i) => {
+    if (result.ok) {
+      imgEls[i].src = result.url;
+    } else {
+      imgEls[i].removeAttribute("src");
+      failed += 1;
+    }
+  });
+
+  if (failed === 0) {
     setStatus("");
-  };
-  im.onerror = () => {
-    if (requestId !== latestRequestId) return;
-    setStatus(`Failed to load: ${url}`);
-  };
-  im.src = url;
+  } else {
+    setStatus(`${failed} image(s) failed to load for this slice.`);
+  }
 }
 
 const debouncedLoadSlice = debounce(loadSlice, 120);
 
 function step(delta) {
-  const next = Math.max(0, Math.min(SLICE_COUNT - 1, parseInt(els.slice.value, 10) + delta));
+  const next = Math.max(
+    0,
+    Math.min(SLICE_COUNT - 1, parseInt(els.slice.value, 10) + delta)
+  );
   els.slice.value = String(next);
   updateLabel();
   loadSlice();
@@ -148,11 +180,15 @@ async function initPatients() {
 
   const st = getStateFromUrl();
   if (st.patientKey) {
-    const idx = patients.findIndex(x => x.id === st.patientKey);
+    const idx = patients.findIndex((x) => x.id === st.patientKey);
     if (idx >= 0) els.patient.value = String(idx);
   }
   if (st.dir) els.dir.value = st.dir;
-  if (Number.isInteger(st.slice) && st.slice >= 0 && st.slice <= SLICE_COUNT - 1) {
+  if (
+    Number.isInteger(st.slice) &&
+    st.slice >= 0 &&
+    st.slice <= SLICE_COUNT - 1
+  ) {
     els.slice.value = String(st.slice);
   }
 }
@@ -192,13 +228,17 @@ async function init() {
   });
 
   let wheelAccum = 0;
-  window.addEventListener("wheel", (e) => {
-    wheelAccum += e.deltaY;
-    if (Math.abs(wheelAccum) > 60) {
-      step(wheelAccum > 0 ? 1 : -1);
-      wheelAccum = 0;
-    }
-  }, { passive: true });
+  window.addEventListener(
+    "wheel",
+    (e) => {
+      wheelAccum += e.deltaY;
+      if (Math.abs(wheelAccum) > 60) {
+        step(wheelAccum > 0 ? 1 : -1);
+        wheelAccum = 0;
+      }
+    },
+    { passive: true }
+  );
 }
 
-init().catch(err => setStatus(String(err)));
+init().catch((err) => setStatus(String(err)));
