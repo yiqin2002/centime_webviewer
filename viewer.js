@@ -1,7 +1,7 @@
 const SLICE_COUNT = 480;
 const PAD = 3;
 const EXT = "png";
-const DEFAULT_METHODS = ["ct", "centime", "eigencam"];
+const DEFAULT_METHODS = ["method_1", "method_2", "method_3"];
 
 let patients = [];
 let latestRequestId = 0;
@@ -13,6 +13,11 @@ const els = {
   img1: document.getElementById("img1"),
   img2: document.getElementById("img2"),
   img3: document.getElementById("img3"),
+  methodLabel1: document.getElementById("method-label-1"),
+  methodLabel2: document.getElementById("method-label-2"),
+  methodLabel3: document.getElementById("method-label-3"),
+  toggleMethodLabels: document.getElementById("toggle-method-labels"),
+  imageRow: document.getElementById("image-row"),
   status: document.getElementById("status"),
   label: document.getElementById("label"),
   prev: document.getElementById("prev"),
@@ -48,6 +53,7 @@ function getStateFromUrl() {
     patientKey: p.get("p"),
     dir: p.get("d"),
     slice: p.get("s") ? parseInt(p.get("s"), 10) : null,
+    showLabels: p.get("labels") === "1",
   };
 }
 
@@ -57,6 +63,9 @@ function setUrlFromState() {
   p.set("p", selected?.id ?? "");
   p.set("d", els.dir.value);
   p.set("s", String(els.slice.value));
+  if (els.toggleMethodLabels.checked) {
+    p.set("labels", "1");
+  }
   history.replaceState(null, "", `?${p.toString()}`);
 }
 
@@ -100,6 +109,21 @@ function updateLabel() {
   els.label.textContent = `${p?.id ?? "—"} • ${dir} • slice ${s}/${SLICE_COUNT - 1}`;
 }
 
+function updateMethodLabels() {
+  const p = getSelectedPatient();
+  const methods = getPatientMethods(p);
+  const labelEls = [els.methodLabel1, els.methodLabel2, els.methodLabel3];
+
+  for (let i = 0; i < labelEls.length; i++) {
+    labelEls[i].textContent = methods[i] ?? "";
+  }
+}
+
+function applyMethodLabelVisibility() {
+  els.imageRow.classList.toggle("show-method-labels", els.toggleMethodLabels.checked);
+  setUrlFromState();
+}
+
 function clearImages() {
   els.img1.removeAttribute("src");
   els.img2.removeAttribute("src");
@@ -120,6 +144,7 @@ async function loadSlice() {
   if (!p) {
     setStatus("No patient selected.");
     clearImages();
+    updateMethodLabels();
     return;
   }
 
@@ -129,6 +154,7 @@ async function loadSlice() {
   const requestId = ++latestRequestId;
 
   updateLabel();
+  updateMethodLabels();
   renderClinicalFeatures(p);
   setUrlFromState();
 
@@ -140,7 +166,6 @@ async function loadSlice() {
   if (requestId !== latestRequestId) return;
 
   const imgEls = [els.img1, els.img2, els.img3];
-
   imgEls.forEach((imgEl) => imgEl.removeAttribute("src"));
 
   let failed = 0;
@@ -202,6 +227,7 @@ async function initPatients() {
   ) {
     els.slice.value = String(st.slice);
   }
+  els.toggleMethodLabels.checked = st.showLabels;
 }
 
 async function init() {
@@ -210,10 +236,13 @@ async function init() {
   els.slice.step = "1";
 
   await initPatients();
+  applyMethodLabelVisibility();
+  updateMethodLabels();
   updateLabel();
   loadSlice();
 
   els.patient.addEventListener("change", () => {
+    updateMethodLabels();
     updateLabel();
     loadSlice();
   });
@@ -229,6 +258,11 @@ async function init() {
   });
 
   els.slice.addEventListener("change", loadSlice);
+
+  els.toggleMethodLabels.addEventListener("change", () => {
+    applyMethodLabelVisibility();
+    updateMethodLabels();
+  });
 
   els.prev.addEventListener("click", () => step(-1));
   els.next.addEventListener("click", () => step(+1));
