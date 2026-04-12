@@ -85,6 +85,15 @@
       color: #444;
     }
 
+    .column-label {
+      font-size: 18px;
+      font-weight: 800;
+      text-align: center;
+      padding: 4px 0;
+      background: #f0f0f0;
+      border-radius: 6px;
+    }
+
     .show-method-labels .method-label {
       display: block;
     }
@@ -159,20 +168,25 @@
   <p id="status" class="meta"></p>
 
   <div id="image-row" class="image-row">
+
     <div class="image-panel">
+      <div class="column-label">A</div>
       <div id="method-label-1" class="method-label">method_1</div>
-      <img id="img1" alt="CT" />
+      <img id="img1" />
     </div>
 
     <div class="image-panel">
+      <div class="column-label">B</div>
       <div id="method-label-2" class="method-label">method_2</div>
-      <img id="img2" alt="CenTime Map" />
+      <img id="img2" />
     </div>
 
     <div class="image-panel">
+      <div class="column-label">C</div>
       <div id="method-label-3" class="method-label">method_3</div>
-      <img id="img3" alt="EigenCAM" />
+      <img id="img3" />
     </div>
+
   </div>
 
   <script src="viewer.js"></script>
