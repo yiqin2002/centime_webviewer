@@ -67,7 +67,7 @@
 
     .image-row {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 12px;
       margin-top: 12px;
       align-items: start;
@@ -79,19 +79,19 @@
       gap: 6px;
     }
 
+    .column-label {
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+      color: #222;
+      margin-bottom: 2px;
+    }
+
     .method-label {
       display: none;
       font-size: 14px;
       color: #444;
-    }
-
-    .column-label {
-      font-size: 18px;
-      font-weight: 800;
       text-align: center;
-      padding: 4px 0;
-      background: #f0f0f0;
-      border-radius: 6px;
     }
 
     .show-method-labels .method-label {
@@ -106,6 +106,12 @@
       border-radius: 8px;
     }
 
+    @media (max-width: 1200px) {
+      .image-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
     @media (max-width: 900px) {
       .image-row {
         grid-template-columns: 1fr;
@@ -113,6 +119,7 @@
     }
   </style>
 </head>
+
 <body>
   <h1>CT Slice Viewer</h1>
 
@@ -138,7 +145,7 @@
 
     <label>
       <input id="toggle-method-labels" type="checkbox" />
-      Show labels
+      Show method labels
     </label>
 
     <span id="label" class="meta"></span>
@@ -149,15 +156,18 @@
 
   <div class="card">
     <div class="meta">Clinical features</div>
+
     <div class="grid">
       <div class="kv">
         <div class="k">Patient ID</div>
         <div class="v" id="feat-id">—</div>
       </div>
+
       <div class="kv">
         <div class="k">Censored</div>
         <div class="v" id="feat-censored">—</div>
       </div>
+
       <div class="kv">
         <div class="k">Time to event</div>
         <div class="v" id="feat-tti">—</div>
@@ -168,25 +178,35 @@
   <p id="status" class="meta"></p>
 
   <div id="image-row" class="image-row">
-
     <div class="image-panel">
       <div class="column-label">A</div>
       <div id="method-label-1" class="method-label">method_1</div>
-      <img id="img1" />
+      <img id="img1" alt="Column A" />
     </div>
 
     <div class="image-panel">
       <div class="column-label">B</div>
       <div id="method-label-2" class="method-label">method_2</div>
-      <img id="img2" />
+      <img id="img2" alt="Column B" />
     </div>
 
     <div class="image-panel">
       <div class="column-label">C</div>
       <div id="method-label-3" class="method-label">method_3</div>
-      <img id="img3" />
+      <img id="img3" alt="Column C" />
     </div>
 
+    <div class="image-panel">
+      <div class="column-label">D</div>
+      <div id="method-label-4" class="method-label">method_4</div>
+      <img id="img4" alt="Column D" />
+    </div>
+
+    <div class="image-panel">
+      <div class="column-label">E</div>
+      <div id="method-label-5" class="method-label">method_5</div>
+      <img id="img5" alt="Column E" />
+    </div>
   </div>
 
   <script src="viewer.js"></script>

@@ -6,7 +6,7 @@
       "censored": false,
       "time_to_event": 15,
       "time_unit": "months",
-      "methods": ["ct", "eigencam", "centime"]
+      "methods": ["ct", "centime", "eigencam", "centime_beta0", "eigencam_beta0"]
     },
     {
       "id": "pid_731598",
@@ -14,7 +14,7 @@
       "censored": false,
       "time_to_event": 20,
       "time_unit": "months",
-      "methods": ["ct", "centime", "eigencam"]
+      "methods": ["ct", "centime", "eigencam", "centime_beta0", "eigencam_beta0"]
     }
   ]
 }
