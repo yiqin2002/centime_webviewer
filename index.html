@@ -88,14 +88,9 @@
     }
 
     .method-label {
-      display: none;
       font-size: 14px;
       color: #444;
       text-align: center;
-    }
-
-    .show-method-labels .method-label {
-      display: block;
     }
 
     .image-panel img {
@@ -121,11 +116,9 @@
 </head>
 
 <body>
-
   <h1>CT Slice Viewer</h1>
 
   <div class="controls">
-
     <label>
       Patient:
       <select id="patient"></select>
@@ -145,23 +138,16 @@
       <input id="slice" type="range" min="0" max="479" value="0" />
     </label>
 
-    <label>
-      <input id="toggle-method-labels" type="checkbox" />
-      Show method labels
-    </label>
-
     <span id="label" class="meta"></span>
 
     <button id="prev">◀</button>
     <button id="next">▶</button>
-
   </div>
 
   <div class="card">
     <div class="meta">Clinical features</div>
 
     <div class="grid">
-
       <div class="kv">
         <div class="k">Patient ID</div>
         <div class="v" id="feat-id">—</div>
@@ -176,14 +162,12 @@
         <div class="k">Time to event</div>
         <div class="v" id="feat-tti">—</div>
       </div>
-
     </div>
   </div>
 
   <p id="status" class="meta"></p>
 
   <div id="image-row" class="image-row">
-
     <div class="image-panel">
       <div class="column-label">CT</div>
       <div id="method-label-1" class="method-label">method_1</div>
@@ -207,10 +191,8 @@
       <div id="method-label-4" class="method-label">method_4</div>
       <img id="img4" alt="Column D" />
     </div>
-
   </div>
 
   <script src="viewer.js"></script>
-
 </body>
 </html>

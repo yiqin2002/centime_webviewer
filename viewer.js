@@ -27,9 +27,6 @@ const els = {
   methodLabel3: document.getElementById("method-label-3"),
   methodLabel4: document.getElementById("method-label-4"),
 
-  toggleMethodLabels: document.getElementById("toggle-method-labels"),
-  imageRow: document.getElementById("image-row"),
-
   status: document.getElementById("status"),
   label: document.getElementById("label"),
   prev: document.getElementById("prev"),
@@ -68,7 +65,6 @@ function getStateFromUrl() {
     patientKey: p.get("p"),
     dir: p.get("d"),
     slice: p.get("s") ? parseInt(p.get("s"), 10) : null,
-    showLabels: p.get("labels") === "1",
   };
 }
 
@@ -79,10 +75,6 @@ function setUrlFromState() {
   p.set("p", selected?.id ?? "");
   p.set("d", els.dir.value);
   p.set("s", String(els.slice.value));
-
-  if (els.toggleMethodLabels.checked) {
-    p.set("labels", "1");
-  }
 
   history.replaceState(null, "", `?${p.toString()}`);
 }
@@ -150,15 +142,6 @@ function updateMethodLabels() {
   for (let i = 0; i < labelEls.length; i++) {
     labelEls[i].textContent = methods[i] ?? "";
   }
-}
-
-function applyMethodLabelVisibility() {
-  els.imageRow.classList.toggle(
-    "show-method-labels",
-    els.toggleMethodLabels.checked
-  );
-
-  setUrlFromState();
 }
 
 function clearImages() {
@@ -314,8 +297,6 @@ async function initPatients() {
   ) {
     els.slice.value = String(st.slice);
   }
-
-  els.toggleMethodLabels.checked = st.showLabels;
 }
 
 async function init() {
@@ -325,7 +306,6 @@ async function init() {
 
   await initPatients();
 
-  applyMethodLabelVisibility();
   updateMethodLabels();
   updateLabel();
   loadSlice();
@@ -347,14 +327,6 @@ async function init() {
   });
 
   els.slice.addEventListener("change", loadSlice);
-
-  els.toggleMethodLabels.addEventListener(
-    "change",
-    () => {
-      applyMethodLabelVisibility();
-      updateMethodLabels();
-    }
-  );
 
   els.prev.addEventListener("click", () => step(-1));
   els.next.addEventListener("click", () => step(1));
