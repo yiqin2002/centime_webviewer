@@ -120,7 +120,7 @@ function updateLabel() {
   const dir = els.dir.value;
 
   els.label.textContent =
-    `${p?.id ?? "—"} • ${dir} • slice ${s}/${SLICE_COUNT - 1}`;
+    `${p?.id ?? "—"} • ${dir} • slice ${s + 1}/${SLICE_COUNT}`;
 }
 
 function clearImages() {
