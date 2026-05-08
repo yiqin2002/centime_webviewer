@@ -22,11 +22,6 @@ const els = {
   img3: document.getElementById("img3"),
   img4: document.getElementById("img4"),
 
-  methodLabel1: document.getElementById("method-label-1"),
-  methodLabel2: document.getElementById("method-label-2"),
-  methodLabel3: document.getElementById("method-label-3"),
-  methodLabel4: document.getElementById("method-label-4"),
-
   status: document.getElementById("status"),
   label: document.getElementById("label"),
   prev: document.getElementById("prev"),
@@ -128,22 +123,6 @@ function updateLabel() {
     `${p?.id ?? "—"} • ${dir} • slice ${s}/${SLICE_COUNT - 1}`;
 }
 
-function updateMethodLabels() {
-  const p = getSelectedPatient();
-  const methods = getPatientMethods(p);
-
-  const labelEls = [
-    els.methodLabel1,
-    els.methodLabel2,
-    els.methodLabel3,
-    els.methodLabel4,
-  ];
-
-  for (let i = 0; i < labelEls.length; i++) {
-    labelEls[i].textContent = methods[i] ?? "";
-  }
-}
-
 function clearImages() {
   [
     els.img1,
@@ -172,7 +151,6 @@ async function loadSlice() {
   if (!p) {
     setStatus("No patient selected.");
     clearImages();
-    updateMethodLabels();
     return;
   }
 
@@ -183,7 +161,6 @@ async function loadSlice() {
   const requestId = ++latestRequestId;
 
   updateLabel();
-  updateMethodLabels();
   renderClinicalFeatures(p);
   setUrlFromState();
 
@@ -306,12 +283,10 @@ async function init() {
 
   await initPatients();
 
-  updateMethodLabels();
   updateLabel();
   loadSlice();
 
   els.patient.addEventListener("change", () => {
-    updateMethodLabels();
     updateLabel();
     loadSlice();
   });
