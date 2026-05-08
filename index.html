@@ -87,12 +87,6 @@
       margin-bottom: 2px;
     }
 
-    .method-label {
-      font-size: 14px;
-      color: #444;
-      text-align: center;
-    }
-
     .image-panel img {
       width: 100%;
       height: auto;
@@ -116,9 +110,11 @@
 </head>
 
 <body>
+
   <h1>CT Slice Viewer</h1>
 
   <div class="controls">
+
     <label>
       Patient:
       <select id="patient"></select>
@@ -142,12 +138,15 @@
 
     <button id="prev">◀</button>
     <button id="next">▶</button>
+
   </div>
 
   <div class="card">
+
     <div class="meta">Clinical features</div>
 
     <div class="grid">
+
       <div class="kv">
         <div class="k">Patient ID</div>
         <div class="v" id="feat-id">—</div>
@@ -162,37 +161,38 @@
         <div class="k">Time to event</div>
         <div class="v" id="feat-tti">—</div>
       </div>
+
     </div>
+
   </div>
 
   <p id="status" class="meta"></p>
 
   <div id="image-row" class="image-row">
+
     <div class="image-panel">
       <div class="column-label">CT</div>
-      <!-- <div id="method-label-1" class="method-label">method_1</div> -->
       <img id="img1" alt="Column A" />
     </div>
 
     <div class="image-panel">
       <div class="column-label">A</div>
-      <!-- <div id="method-label-2" class="method-label">method_2</div> -->
       <img id="img2" alt="Column B" />
     </div>
 
     <div class="image-panel">
       <div class="column-label">B</div>
-      <!-- <div id="method-label-3" class="method-label">method_3</div> -->
       <img id="img3" alt="Column C" />
     </div>
 
     <div class="image-panel">
       <div class="column-label">C</div>
-      <!-- <div id="method-label-4" class="method-label">method_4</div> -->
       <img id="img4" alt="Column D" />
     </div>
+
   </div>
 
   <script src="viewer.js"></script>
+
 </body>
 </html>
