@@ -1,7 +1,13 @@
 const SLICE_COUNT = 480;
 const PAD = 3;
 const EXT = "png";
-const DEFAULT_METHODS = ["method_1", "method_2", "method_3", "method_4", "method_5"];
+
+const DEFAULT_METHODS = [
+  "method_1",
+  "method_2",
+  "method_3",
+  "method_4",
+];
 
 let patients = [];
 let latestRequestId = 0;
@@ -15,13 +21,11 @@ const els = {
   img2: document.getElementById("img2"),
   img3: document.getElementById("img3"),
   img4: document.getElementById("img4"),
-  img5: document.getElementById("img5"),
 
   methodLabel1: document.getElementById("method-label-1"),
   methodLabel2: document.getElementById("method-label-2"),
   methodLabel3: document.getElementById("method-label-3"),
   methodLabel4: document.getElementById("method-label-4"),
-  methodLabel5: document.getElementById("method-label-5"),
 
   toggleMethodLabels: document.getElementById("toggle-method-labels"),
   imageRow: document.getElementById("image-row"),
@@ -38,6 +42,7 @@ const els = {
 
 function debounce(func, delay) {
   let timeout;
+
   return function (...args) {
     clearTimeout(timeout);
     timeout = setTimeout(() => func.apply(this, args), delay);
@@ -58,6 +63,7 @@ function setStatus(msg) {
 
 function getStateFromUrl() {
   const p = new URLSearchParams(location.search);
+
   return {
     patientKey: p.get("p"),
     dir: p.get("d"),
@@ -126,7 +132,8 @@ function updateLabel() {
   const s = els.slice.value;
   const dir = els.dir.value;
 
-  els.label.textContent = `${p?.id ?? "—"} • ${dir} • slice ${s}/${SLICE_COUNT - 1}`;
+  els.label.textContent =
+    `${p?.id ?? "—"} • ${dir} • slice ${s}/${SLICE_COUNT - 1}`;
 }
 
 function updateMethodLabels() {
@@ -138,7 +145,6 @@ function updateMethodLabels() {
     els.methodLabel2,
     els.methodLabel3,
     els.methodLabel4,
-    els.methodLabel5,
   ];
 
   for (let i = 0; i < labelEls.length; i++) {
@@ -147,12 +153,21 @@ function updateMethodLabels() {
 }
 
 function applyMethodLabelVisibility() {
-  els.imageRow.classList.toggle("show-method-labels", els.toggleMethodLabels.checked);
+  els.imageRow.classList.toggle(
+    "show-method-labels",
+    els.toggleMethodLabels.checked
+  );
+
   setUrlFromState();
 }
 
 function clearImages() {
-  [els.img1, els.img2, els.img3, els.img4, els.img5].forEach((img) => {
+  [
+    els.img1,
+    els.img2,
+    els.img3,
+    els.img4,
+  ].forEach((img) => {
     img.removeAttribute("src");
   });
 }
@@ -181,6 +196,7 @@ async function loadSlice() {
   const dir = els.dir.value;
   const s = parseInt(els.slice.value, 10);
   const methods = getPatientMethods(p);
+
   const requestId = ++latestRequestId;
 
   updateLabel();
@@ -188,7 +204,9 @@ async function loadSlice() {
   renderClinicalFeatures(p);
   setUrlFromState();
 
-  const urls = methods.map((method) => buildUrl(p.folder, dir, method, s));
+  const urls = methods.map((method) =>
+    buildUrl(p.folder, dir, method, s)
+  );
 
   setStatus(`Loading slice ${s}...`);
 
@@ -196,7 +214,12 @@ async function loadSlice() {
 
   if (requestId !== latestRequestId) return;
 
-  const imgEls = [els.img1, els.img2, els.img3, els.img4, els.img5];
+  const imgEls = [
+    els.img1,
+    els.img2,
+    els.img3,
+    els.img4,
+  ];
 
   imgEls.forEach((imgEl) => imgEl.removeAttribute("src"));
 
@@ -223,24 +246,34 @@ const debouncedLoadSlice = debounce(loadSlice, 120);
 function step(delta) {
   const next = Math.max(
     0,
-    Math.min(SLICE_COUNT - 1, parseInt(els.slice.value, 10) + delta)
+    Math.min(
+      SLICE_COUNT - 1,
+      parseInt(els.slice.value, 10) + delta
+    )
   );
 
   els.slice.value = String(next);
+
   updateLabel();
   loadSlice();
 }
 
 async function initPatients() {
-  const res = await fetch("patients.json", { cache: "no-store" });
+  const res = await fetch("patients.json", {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
-    throw new Error(`Could not read patients.json (${res.status})`);
+    throw new Error(
+      `Could not read patients.json (${res.status})`
+    );
   }
 
   const data = await res.json();
 
-  patients = Array.isArray(data.patients) ? data.patients : [];
+  patients = Array.isArray(data.patients)
+    ? data.patients
+    : [];
 
   if (!patients.length) {
     throw new Error("patients.json has no patients.");
@@ -252,7 +285,8 @@ async function initPatients() {
     const opt = document.createElement("option");
 
     opt.value = String(i);
-    opt.textContent = p.id ?? p.folder ?? `patient_${i}`;
+    opt.textContent =
+      p.id ?? p.folder ?? `patient_${i}`;
 
     els.patient.appendChild(opt);
   });
@@ -260,7 +294,9 @@ async function initPatients() {
   const st = getStateFromUrl();
 
   if (st.patientKey) {
-    const idx = patients.findIndex((x) => x.id === st.patientKey);
+    const idx = patients.findIndex(
+      (x) => x.id === st.patientKey
+    );
 
     if (idx >= 0) {
       els.patient.value = String(idx);
@@ -312,17 +348,25 @@ async function init() {
 
   els.slice.addEventListener("change", loadSlice);
 
-  els.toggleMethodLabels.addEventListener("change", () => {
-    applyMethodLabelVisibility();
-    updateMethodLabels();
-  });
+  els.toggleMethodLabels.addEventListener(
+    "change",
+    () => {
+      applyMethodLabelVisibility();
+      updateMethodLabels();
+    }
+  );
 
   els.prev.addEventListener("click", () => step(-1));
   els.next.addEventListener("click", () => step(1));
 
   window.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft" || e.key === "a") step(-1);
-    if (e.key === "ArrowRight" || e.key === "d") step(1);
+    if (e.key === "ArrowLeft" || e.key === "a") {
+      step(-1);
+    }
+
+    if (e.key === "ArrowRight" || e.key === "d") {
+      step(1);
+    }
   });
 
   let wheelAccum = 0;

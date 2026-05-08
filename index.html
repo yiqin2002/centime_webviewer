@@ -67,7 +67,7 @@
 
     .image-row {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
       margin-top: 12px;
       align-items: start;
@@ -108,11 +108,11 @@
 
     @media (max-width: 1200px) {
       .image-row {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 700px) {
       .image-row {
         grid-template-columns: 1fr;
       }
@@ -121,9 +121,11 @@
 </head>
 
 <body>
+
   <h1>CT Slice Viewer</h1>
 
   <div class="controls">
+
     <label>
       Patient:
       <select id="patient"></select>
@@ -152,12 +154,14 @@
 
     <button id="prev">◀</button>
     <button id="next">▶</button>
+
   </div>
 
   <div class="card">
     <div class="meta">Clinical features</div>
 
     <div class="grid">
+
       <div class="kv">
         <div class="k">Patient ID</div>
         <div class="v" id="feat-id">—</div>
@@ -172,12 +176,14 @@
         <div class="k">Time to event</div>
         <div class="v" id="feat-tti">—</div>
       </div>
+
     </div>
   </div>
 
   <p id="status" class="meta"></p>
 
   <div id="image-row" class="image-row">
+
     <div class="image-panel">
       <div class="column-label">CT</div>
       <div id="method-label-1" class="method-label">method_1</div>
@@ -185,30 +191,26 @@
     </div>
 
     <div class="image-panel">
-      <div class="column-label">Centime</div>
+      <div class="column-label">B</div>
       <div id="method-label-2" class="method-label">method_2</div>
       <img id="img2" alt="Column B" />
     </div>
 
     <div class="image-panel">
-      <div class="column-label">EigenCAM</div>
-      <div id="method-label-3" class="method-label">EigenCAM</div>
+      <div class="column-label">C</div>
+      <div id="method-label-3" class="method-label">method_3</div>
       <img id="img3" alt="Column C" />
     </div>
 
     <div class="image-panel">
-      <div class="column-label">Centime(Beta0)</div>
+      <div class="column-label">D</div>
       <div id="method-label-4" class="method-label">method_4</div>
       <img id="img4" alt="Column D" />
     </div>
 
-    <div class="image-panel">
-      <div class="column-label">EigenCAM(Beta0)</div>
-      <div id="method-label-5" class="method-label">method_5</div>
-      <img id="img5" alt="Column E" />
-    </div>
   </div>
 
   <script src="viewer.js"></script>
+
 </body>
 </html>
