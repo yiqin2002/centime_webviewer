@@ -1,20 +1,28 @@
 {
   "patients": [
     {
-      "id": "pid_543024",
-      "folder": "uncens_time_15.0_pid_543024_1",
-      "censored": false,
-      "time_to_event": 15,
+      "id": "pid_1000486",
+      "folder": "cens_time_8.0_pid_1000486_0",
+      "censored": true,
+      "time_to_event": 8,
       "time_unit": "months",
       "methods": ["ct", "centime", "eigencam", "centime_beta0"]
     },
     {
-      "id": "pid_731598",
-      "folder": "uncens_time_20.0_pid_731598_0",
-      "censored": false,
-      "time_to_event": 20,
+      "id": "pid_1000471",
+      "folder": "cens_time_10.0_pid_1000471_0",
+      "censored": true,
+      "time_to_event": 10,
       "time_unit": "months",
       "methods": ["ct", "eigencam", "centime_beta0", "centime"]
+    },
+    {
+      "id": "pid_1000291",
+      "folder": "cens_time_12.0_pid_1000291_0",
+      "censored": true,
+      "time_to_event": 12,
+      "time_unit": "months",
+      "methods": ["ct", "centime_beta0", "eigencam", "centime"]
     }
   ]
 }
