@@ -62,7 +62,7 @@
       "censored": false,
       "time_to_event": 7,
       "time_unit": "months",
-      "methods": ["ct", "eigencam", "centime_beta0", "centime"]
+      "methods": ["ct", "centime", "eigencam", "centime_beta0"]
     },
     {
       "id": "pid_751567",
@@ -70,7 +70,31 @@
       "censored": false,
       "time_to_event": 11,
       "time_unit": "months",
-      "methods": ["ct", "eigencam", "centime_beta0", "centime"]
+      "methods": ["ct", "centime_beta0", "eigencam", "centime"]
+    },
+    {
+      "id": "pid_597504",
+      "folder": "uncens_time_15.0_pid_597504_1",
+      "censored": false,
+      "time_to_event": 15,
+      "time_unit": "months",
+      "methods": ["ct", "centime_beta0", "centime", "eigencam"]
+    },
+    {
+      "id": "pid_731598",
+      "folder": "uncens_time_20.0_pid_731598_0",
+      "censored": false,
+      "time_to_event": 20,
+      "time_unit": "months",
+      "methods": ["ct", "centime_beta0", "centime", "eigencam"]
+    },
+    {
+      "id": "pid_374153",
+      "folder": "uncens_time_24.0_pid_374153_1",
+      "censored": false,
+      "time_to_event": 24,
+      "time_unit": "months",
+      "methods": ["ct", "centime", "eigencam", "centime_beta0"]
     }
   ]
 }
