@@ -16,15 +16,9 @@ def rename_files(folder_path: str):
         file_path.rename(new_path)
 
 folder_path_list = [
-    "scan/cens_time_8.0_pid_1000486_0/slices_x/eigencam",
-    "scan/cens_time_8.0_pid_1000486_0/slices_y/eigencam",
-    "scan/cens_time_8.0_pid_1000486_0/slices_z/eigencam",
-    "scan/cens_time_10.0_pid_1000471_0/slices_x/eigencam",
-    "scan/cens_time_10.0_pid_1000471_0/slices_y/eigencam",
-    "scan/cens_time_10.0_pid_1000471_0/slices_z/eigencam",
-    "scan/cens_time_12.0_pid_1000291_0/slices_x/eigencam",
-    "scan/cens_time_12.0_pid_1000291_0/slices_y/eigencam",
-    "scan/cens_time_12.0_pid_1000291_0/slices_z/eigencam"
+    "scan/cens_time_12.0_pid_1001205_0/slices_x/eigencam",
+    "scan/cens_time_12.0_pid_1001205_0/slices_y/eigencam",
+    "scan/cens_time_12.0_pid_1001205_0/slices_z/eigencam"
 ]
 
 for folder_path in folder_path_list:
