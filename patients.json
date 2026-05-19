@@ -47,6 +47,14 @@
       "time_to_event": 20,
       "time_unit": "months",
       "methods": ["ct", "eigencam", "centime_beta0", "centime"]
+    },
+    {
+      "id": "pid_755471",
+      "folder": "uncens_time_2.0_pid_755471_0",
+      "censored": false,
+      "time_to_event": 2,
+      "time_unit": "months",
+      "methods": ["ct", "eigencam", "centime_beta0", "centime"]
     }
   ]
 }
