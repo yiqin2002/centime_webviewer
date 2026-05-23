@@ -6,7 +6,7 @@
       "censored": true,
       "time_to_event": 8,
       "time_unit": "months",
-      "methods": ["ct", "centime", "eigencam", "centime_beta0"]
+      "methods": ["ct", "centime", "eigencam", "centime_beta0", "centime_beta1"]
     },
     {
       "id": "pid_1000471",
@@ -14,7 +14,7 @@
       "censored": true,
       "time_to_event": 10,
       "time_unit": "months",
-      "methods": ["ct", "eigencam", "centime_beta0", "centime"]
+      "methods": ["ct", "eigencam", "centime_beta0", "centime_beta1", "centime"]
     },
     {
       "id": "pid_1000291",
@@ -22,7 +22,7 @@
       "censored": true,
       "time_to_event": 12,
       "time_unit": "months",
-      "methods": ["ct", "centime_beta0", "eigencam", "centime"]
+      "methods": ["ct", "centime_beta0", "eigencam", "centime_beta1", "centime"]
     },
     {
       "id": "pid_1000977",

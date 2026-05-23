@@ -7,6 +7,7 @@ const DEFAULT_METHODS = [
   "method_2",
   "method_3",
   "method_4",
+  "method_5",
 ];
 
 let patients = [];
@@ -21,6 +22,7 @@ const els = {
   img2: document.getElementById("img2"),
   img3: document.getElementById("img3"),
   img4: document.getElementById("img4"),
+  img5: document.getElementById("img5"),
 
   status: document.getElementById("status"),
   label: document.getElementById("label"),
@@ -129,6 +131,7 @@ function clearImages() {
     els.img2,
     els.img3,
     els.img4,
+    els.img5,
   ].forEach((img) => {
     img.removeAttribute("src");
   });
@@ -179,6 +182,7 @@ async function loadSlice() {
     els.img2,
     els.img3,
     els.img4,
+    els.img5,
   ];
 
   imgEls.forEach((imgEl) => imgEl.removeAttribute("src"));
