@@ -95,6 +95,14 @@
       "time_to_event": 24,
       "time_unit": "months",
       "methods": ["ct", "centime", "centime_beta1", "eigencam", "centime_beta0"]
+    },
+    {
+      "id": "pid_597504",
+      "folder": "uncens_time_26.0_pid_597504_0",
+      "censored": false,
+      "time_to_event": 26,
+      "time_unit": "months",
+      "methods": ["ct", "centime_beta0", "eigencam", "centime", "centime_beta1"]
     }
   ]
 }
