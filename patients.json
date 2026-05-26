@@ -112,5 +112,14 @@
       "time_unit": "months",
       "methods": ["ct", "centime_beta0", "eigencam", "centime", "centime_beta1"]
     }
+    ,
+    {
+      "id": "pid_763948",
+      "folder": "uncens_time_30.0_pid_763948_0",
+      "censored": false,
+      "time_to_event": 30,
+      "time_unit": "months",
+      "methods": ["ct", "centime_beta0", "eigencam", "centime", "centime_beta1"]
+    }
   ]
 }
