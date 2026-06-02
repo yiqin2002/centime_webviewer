@@ -1,4 +1,4 @@
-const SLICE_COUNT = 240;
+const SLICE_COUNT = 120;
 const PAD = 3;
 const EXT = "png";
 
