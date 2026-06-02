@@ -52,14 +52,14 @@ def downscale_slices(pid_folder: str, n_slices: int = 240):
 
 if __name__ == "__main__":
     pid_folders = [
-        "scan/cens_time_25.0_pid_961252_0",
-        "scan/cens_time_28.0_pid_702119_0",
-        "scan/cens_time_39.0_pid_217925_1",
-        "scan/cens_time_60.0_pid_1000239_0",
-        "scan/uncens_time_1.0_pid_124726_1",
-        "scan/uncens_time_2.0_pid_731598_1",
-        "scan/uncens_time_2.0_pid_755471_0",
-        "scan/uncens_time_2.0_pid_1000713_0",
+        "scan/uncens_time_7.0_pid_602259_0",
+        "scan/uncens_time_9.0_pid_739214_1",
+        "scan/uncens_time_11.0_pid_751567_0",
+        "scan/uncens_time_15.0_pid_543024_1",
+        "scan/uncens_time_15.0_pid_597504_1",
+        "scan/uncens_time_20.0_pid_731598_0",
+        "scan/uncens_time_24.0_pid_374153_1",
+        "scan/uncens_time_26.0_pid_597504_0",
     ]
 
     for pid_folder in pid_folders:
