@@ -25,14 +25,6 @@
       "methods": ["ct", "centime_beta0", "eigencam", "centime_beta1", "centime"]
     },
     {
-      "id": "pid_1000977",
-      "folder": "cens_time_19.0_pid_1000977_0",
-      "censored": true,
-      "time_to_event": 19,
-      "time_unit": "months",
-      "methods": ["ct", "centime_beta1", "eigencam", "centime_beta0", "centime"]
-    },
-    {
       "id": "pid_1001205",
       "folder": "cens_time_12.0_pid_1001205_0",
       "censored": true,
@@ -183,14 +175,6 @@
       "time_to_event": 19,
       "time_unit": "months",
       "methods": ["ct", "centime", "eigencam", "centime_beta0", "centime_beta1"]
-    },
-    {
-      "id": "pid_415344",
-      "folder": "cens_time_20.0_pid_415344_1",
-      "censored": true,
-      "time_to_event": 20,
-      "time_unit": "months",
-      "methods": ["ct", "centime", "centime_beta0", "eigencam", "centime_beta1"]
     },
     {
       "id": "pid_899663",
