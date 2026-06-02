@@ -295,6 +295,30 @@
       "time_to_event": 117,
       "time_unit": "months",
       "methods": ["ct", "centime_beta0", "centime_beta1", "eigencam", "centime"]
+    },
+    {
+      "id": "pid_807885",
+      "folder": "uncens_time_17.0_pid_807885_1",
+      "censored": false,
+      "time_to_event": 17,
+      "time_unit": "months",
+      "methods": ["ct", "centime", "eigencam", "centime_beta0", "centime_beta1"]
+    },
+    {
+      "id": "pid_775217",
+      "folder": "uncens_time_18.0_pid_775217_0",
+      "censored": false,
+      "time_to_event": 18,
+      "time_unit": "months",
+      "methods": ["ct", "eigencam", "centime", "centime_beta1", "centime_beta0"]
+    },
+    {
+      "id": "pid_1001366",
+      "folder": "uncens_time_19.0_pid_1001366_0",
+      "censored": false,
+      "time_to_event": 19,
+      "time_unit": "months",
+      "methods": ["ct", "centime", "eigencam", "centime_beta0", "centime_beta1"]
     }
   ]
 }
