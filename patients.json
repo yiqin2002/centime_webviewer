@@ -191,6 +191,38 @@
       "time_to_event": 23,
       "time_unit": "months",
       "methods": ["ct", "eigencam", "centime_beta0", "centime", "centime_beta1"]
+    },
+    {
+      "id": "pid_961252",
+      "folder": "cens_time_25.0_pid_961252_0",
+      "censored": true,
+      "time_to_event": 25,
+      "time_unit": "months",
+      "methods": ["ct", "eigencam", "centime_beta1", "centime_beta0", "centime"]
+    },
+    {
+      "id": "pid_702119",
+      "folder": "cens_time_28.0_pid_702119_0",
+      "censored": true,
+      "time_to_event": 28,
+      "time_unit": "months",
+      "methods": ["ct", "centime_beta1", "eigencam", "centime", "centime_beta0"]
+    },
+    {
+      "id": "pid_217925",
+      "folder": "cens_time_39.0_pid_217925_1",
+      "censored": true,
+      "time_to_event": 39,
+      "time_unit": "months",
+      "methods": ["ct", "centime", "centime_beta0", "eigencam", "centime_beta1"]
+    },
+    {
+      "id": "pid_1000239",
+      "folder": "cens_time_60.0_pid_1000239_0",
+      "censored": true,
+      "time_to_event": 60,
+      "time_unit": "months",
+      "methods": ["ct", "eigencam", "centime_beta1", "centime", "centime_beta0"]
     }
   ]
 }
