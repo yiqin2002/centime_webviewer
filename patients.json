@@ -1,7 +1,7 @@
 {
   "patients": [
     {
-      "id": "pid_1000486",
+      "id": "pid_1000486_0",
       "folder": "cens_time_8.0_pid_1000486_0",
       "censored": true,
       "time_to_event": 8,
@@ -9,7 +9,7 @@
       "methods": ["ct", "centime", "eigencam", "centime_beta0", "centime_beta1"]
     },
     {
-      "id": "pid_1000471",
+      "id": "pid_1000471_0",
       "folder": "cens_time_10.0_pid_1000471_0",
       "censored": true,
       "time_to_event": 10,
@@ -17,7 +17,7 @@
       "methods": ["ct", "eigencam", "centime_beta0", "centime_beta1", "centime"]
     },
     {
-      "id": "pid_1000291",
+      "id": "pid_1000291_0",
       "folder": "cens_time_12.0_pid_1000291_0",
       "censored": true,
       "time_to_event": 12,
@@ -25,7 +25,7 @@
       "methods": ["ct", "centime_beta0", "eigencam", "centime_beta1", "centime"]
     },
     {
-      "id": "pid_1001205",
+      "id": "pid_1001205_0",
       "folder": "cens_time_12.0_pid_1001205_0",
       "censored": true,
       "time_to_event": 12,
@@ -33,7 +33,7 @@
       "methods": ["ct", "centime_beta0", "centime", "eigencam", "centime_beta1"]
     },
     {
-      "id": "pid_415344",
+      "id": "pid_415344_1",
       "folder": "cens_time_20.0_pid_415344_1",
       "censored": true,
       "time_to_event": 20,
@@ -41,7 +41,7 @@
       "methods": ["ct", "eigencam", "centime_beta0", "centime_beta1", "centime"]
     },
     {
-      "id": "pid_755471",
+      "id": "pid_755471_0",
       "folder": "uncens_time_2.0_pid_755471_0",
       "censored": false,
       "time_to_event": 2,
@@ -49,7 +49,7 @@
       "methods": ["ct", "eigencam", "centime_beta0", "centime_beta1", "centime"]
     },
     {
-      "id": "pid_602259",
+      "id": "pid_602259_0",
       "folder": "uncens_time_7.0_pid_602259_0",
       "censored": false,
       "time_to_event": 7,
@@ -57,7 +57,7 @@
       "methods": ["ct", "centime", "centime_beta1", "eigencam", "centime_beta0"]
     },
     {
-      "id": "pid_751567",
+      "id": "pid_751567_0",
       "folder": "uncens_time_11.0_pid_751567_0",
       "censored": false,
       "time_to_event": 11,
@@ -65,7 +65,7 @@
       "methods": ["ct", "centime_beta0", "eigencam", "centime", "centime_beta1"]
     },
     {
-      "id": "pid_597504",
+      "id": "pid_597504_1",
       "folder": "uncens_time_15.0_pid_597504_1",
       "censored": false,
       "time_to_event": 15,
@@ -73,7 +73,7 @@
       "methods": ["ct", "centime_beta1", "centime_beta0", "centime", "eigencam"]
     },
     {
-      "id": "pid_731598",
+      "id": "pid_731598_0",
       "folder": "uncens_time_20.0_pid_731598_0",
       "censored": false,
       "time_to_event": 20,
@@ -81,7 +81,7 @@
       "methods": ["ct", "centime_beta0", "centime", "centime_beta1", "eigencam"]
     },
     {
-      "id": "pid_374153",
+      "id": "pid_374153_1",
       "folder": "uncens_time_24.0_pid_374153_1",
       "censored": false,
       "time_to_event": 24,
@@ -89,7 +89,7 @@
       "methods": ["ct", "centime", "centime_beta1", "eigencam", "centime_beta0"]
     },
     {
-      "id": "pid_597504",
+      "id": "pid_597504_0",
       "folder": "uncens_time_26.0_pid_597504_0",
       "censored": false,
       "time_to_event": 26,
@@ -97,7 +97,7 @@
       "methods": ["ct", "centime_beta0", "eigencam", "centime", "centime_beta1"]
     },
     {
-      "id": "pid_543024",
+      "id": "pid_543024_0",
       "folder": "uncens_time_28.0_pid_543024_0",
       "censored": false,
       "time_to_event": 28,
@@ -105,7 +105,7 @@
       "methods": ["ct", "eigencam", "centime", "centime_beta0", "centime_beta1"]
     },
     {
-      "id": "pid_763948",
+      "id": "pid_763948_0",
       "folder": "uncens_time_30.0_pid_763948_0",
       "censored": false,
       "time_to_event": 30,
@@ -113,7 +113,7 @@
       "methods": ["ct", "eigencam", "centime_beta0",  "centime_beta1", "centime"]
     },
     {
-      "id": "pid_1002419",
+      "id": "pid_1002419_0",
       "folder": "uncens_time_32.0_pid_1002419_0",
       "censored": false,
       "time_to_event": 32,
@@ -121,7 +121,7 @@
       "methods": ["ct", "centime", "centime_beta1", "centime_beta0", "eigencam"]
     },
     {
-      "id": "pid_782510",
+      "id": "pid_782510_0",
       "folder": "uncens_time_39.0_pid_782510_0",
       "censored": false,
       "time_to_event": 39,
@@ -129,7 +129,7 @@
       "methods": ["ct", "centime_beta0", "eigencam", "centime", "centime_beta1"]
     },
     {
-      "id": "pid_1000997",
+      "id": "pid_1000997_0",
       "folder": "uncens_time_43.0_pid_1000997_0",
       "censored": false,
       "time_to_event": 43,
@@ -137,7 +137,7 @@
       "methods": ["ct", "centime", "centime_beta0", "eigencam", "centime_beta1"]
     },
     {
-      "id": "pid_757397",
+      "id": "pid_757397_0",
       "folder": "uncens_time_51.0_pid_757397_0",
       "censored": false,
       "time_to_event": 51,
@@ -145,7 +145,7 @@
       "methods": ["ct", "centime", "centime_beta0", "eigencam", "centime_beta1"]
     },
     {
-      "id": "pid_699277",
+      "id": "pid_699277_0",
       "folder": "uncens_time_57.0_pid_699277_0",
       "censored": false,
       "time_to_event": 57,
@@ -153,7 +153,7 @@
       "methods": ["ct", "centime_beta1", "centime", "eigencam", "centime_beta0"]
     },
     {
-      "id": "pid_873176",
+      "id": "pid_873176_0",
       "folder": "uncens_time_64.0_pid_873176_0",
       "censored": false,
       "time_to_event": 64,
@@ -161,7 +161,7 @@
       "methods": ["ct", "eigencam", "centime_beta0", "centime_beta1", "centime"]
     },
     {
-      "id": "pid_1001070",
+      "id": "pid_1001070_0",
       "folder": "cens_time_16.0_pid_1001070_0",
       "censored": true,
       "time_to_event": 16,
@@ -169,7 +169,7 @@
       "methods": ["ct", "centime_beta0", "centime_beta1", "centime", "eigencam"]
     },
     {
-      "id": "pid_1000977",
+      "id": "pid_1000977_0",
       "folder": "cens_time_19.0_pid_1000977_0",
       "censored": true,
       "time_to_event": 19,
@@ -177,7 +177,7 @@
       "methods": ["ct", "centime", "eigencam", "centime_beta0", "centime_beta1"]
     },
     {
-      "id": "pid_899663",
+      "id": "pid_899663_0",
       "folder": "cens_time_22.0_pid_899663_0",
       "censored": true,
       "time_to_event": 22,
@@ -185,7 +185,7 @@
       "methods": ["ct", "centime", "centime_beta1", "centime_beta0", "eigencam"]
     },
     {
-      "id": "pid_1000345",
+      "id": "pid_1000345_0",
       "folder": "cens_time_23.0_pid_1000345_0",
       "censored": true,
       "time_to_event": 23,
@@ -193,7 +193,7 @@
       "methods": ["ct", "eigencam", "centime_beta0", "centime", "centime_beta1"]
     },
     {
-      "id": "pid_961252",
+      "id": "pid_961252_0",
       "folder": "cens_time_25.0_pid_961252_0",
       "censored": true,
       "time_to_event": 25,
@@ -201,7 +201,7 @@
       "methods": ["ct", "eigencam", "centime_beta1", "centime_beta0", "centime"]
     },
     {
-      "id": "pid_702119",
+      "id": "pid_702119_0",
       "folder": "cens_time_28.0_pid_702119_0",
       "censored": true,
       "time_to_event": 28,
@@ -209,7 +209,7 @@
       "methods": ["ct", "centime_beta1", "eigencam", "centime", "centime_beta0"]
     },
     {
-      "id": "pid_217925",
+      "id": "pid_217925_1",
       "folder": "cens_time_39.0_pid_217925_1",
       "censored": true,
       "time_to_event": 39,
@@ -217,7 +217,7 @@
       "methods": ["ct", "centime", "centime_beta0", "eigencam", "centime_beta1"]
     },
     {
-      "id": "pid_1000239",
+      "id": "pid_1000239_0",
       "folder": "cens_time_60.0_pid_1000239_0",
       "censored": true,
       "time_to_event": 60,
@@ -225,7 +225,7 @@
       "methods": ["ct", "eigencam", "centime_beta1", "centime", "centime_beta0"]
     },
     {
-      "id": "pid_124726",
+      "id": "pid_124726_1",
       "folder": "uncens_time_1.0_pid_124726_1",
       "censored": false,
       "time_to_event": 1,
@@ -233,7 +233,7 @@
       "methods": ["ct", "eigencam", "centime_beta1", "centime", "centime_beta0"]
     },
     {
-      "id": "pid_731598",
+      "id": "pid_731598_1",
       "folder": "uncens_time_2.0_pid_731598_1",
       "censored": false,
       "time_to_event": 2,
@@ -241,7 +241,7 @@
       "methods": ["ct", "centime_beta0", "centime_beta1", "centime", "eigencam"]
     },
     {
-      "id": "pid_1000713",
+      "id": "pid_1000713_0",
       "folder": "uncens_time_2.0_pid_1000713_0",
       "censored": false,
       "time_to_event": 2,
@@ -249,7 +249,7 @@
       "methods": ["ct", "centime", "eigencam", "centime_beta0", "centime_beta1"]
     },
     {
-      "id": "pid_739214",
+      "id": "pid_739214_1",
       "folder": "uncens_time_9.0_pid_739214_1",
       "censored": false,
       "time_to_event": 9,
@@ -257,7 +257,7 @@
       "methods": ["ct", "eigencam", "centime", "centime_beta1", "centime_beta0"]
     },
     {
-      "id": "pid_543024",
+      "id": "pid_543024_1",
       "folder": "uncens_time_15.0_pid_543024_1",
       "censored": false,
       "time_to_event": 15,
@@ -265,7 +265,7 @@
       "methods": ["ct", "centime", "centime_beta1", "eigencam", "centime_beta0"]
     },
     {
-      "id": "pid_735635",
+      "id": "pid_735635_0",
       "folder": "uncens_time_42.0_pid_735635_0",
       "censored": false,
       "time_to_event": 42,
@@ -273,7 +273,7 @@
       "methods": ["ct", "centime_beta1", "centime", "eigencam", "centime_beta0"]
     },
     {
-      "id": "pid_183030",
+      "id": "pid_183030_0",
       "folder": "uncens_time_46.0_pid_183030_0",
       "censored": false,
       "time_to_event": 46,
@@ -281,7 +281,7 @@
       "methods": ["ct", "centime", "eigencam", "centime_beta0", "centime_beta1"]
     },
     {
-      "id": "pid_699277",
+      "id": "pid_699277_1",
       "folder": "uncens_time_48.0_pid_699277_1",
       "censored": false,
       "time_to_event": 48,
@@ -289,7 +289,7 @@
       "methods": ["ct", "centime_beta1", "centime_beta0", "centime", "eigencam"]
     },
     {
-      "id": "pid_350719",
+      "id": "pid_350719_0",
       "folder": "uncens_time_117.0_pid_350719_0",
       "censored": false,
       "time_to_event": 117,
@@ -297,7 +297,7 @@
       "methods": ["ct", "centime_beta0", "centime_beta1", "eigencam", "centime"]
     },
     {
-      "id": "pid_807885",
+      "id": "pid_807885_1",
       "folder": "uncens_time_17.0_pid_807885_1",
       "censored": false,
       "time_to_event": 17,
@@ -305,7 +305,7 @@
       "methods": ["ct", "centime", "eigencam", "centime_beta0", "centime_beta1"]
     },
     {
-      "id": "pid_775217",
+      "id": "pid_775217_0",
       "folder": "uncens_time_18.0_pid_775217_0",
       "censored": false,
       "time_to_event": 18,
@@ -313,7 +313,7 @@
       "methods": ["ct", "eigencam", "centime", "centime_beta1", "centime_beta0"]
     },
     {
-      "id": "pid_1001366",
+      "id": "pid_1001366_0",
       "folder": "uncens_time_19.0_pid_1001366_0",
       "censored": false,
       "time_to_event": 19,
@@ -321,7 +321,7 @@
       "methods": ["ct", "centime", "eigencam", "centime_beta0", "centime_beta1"]
     },
     {
-      "id": "pid_1000013",
+      "id": "pid_1000013_0",
       "folder": "cens_time_1.0_pid_1000013_0",
       "censored": true,
       "time_to_event": 1,
@@ -329,7 +329,7 @@
       "methods": ["ct", "centime", "centime_beta1", "centime_beta0", "eigencam"]
     },
     {
-      "id": "pid_1000315",
+      "id": "pid_1000315_0",
       "folder": "cens_time_1.0_pid_1000315_0",
       "censored": true,
       "time_to_event": 1,
@@ -337,7 +337,7 @@
       "methods": ["ct", "centime_beta0", "eigencam", "centime", "centime_beta1"]
     },
     {
-      "id": "pid_1000330",
+      "id": "pid_1000330_0",
       "folder": "cens_time_1.0_pid_1000330_0",
       "censored": true,
       "time_to_event": 1,
@@ -345,7 +345,7 @@
       "methods": ["ct", "eigencam", "centime", "centime_beta0", "centime_beta1"]
     },
     {
-      "id": "pid_1000348",
+      "id": "pid_1000348_0",
       "folder": "cens_time_1.0_pid_1000348_0",
       "censored": true,
       "time_to_event": 1,
@@ -353,7 +353,7 @@
       "methods": ["ct", "centime", "centime_beta0", "eigencam", "centime_beta1"]
     },
     {
-      "id": "pid_1000359",
+      "id": "pid_1000359_0",
       "folder": "cens_time_1.0_pid_1000359_0",
       "censored": true,
       "time_to_event": 1,
@@ -361,7 +361,7 @@
       "methods": ["ct", "centime_beta1", "centime", "eigencam", "centime_beta0"]
     },
     {
-      "id": "pid_1000417",
+      "id": "pid_1000417_0",
       "folder": "cens_time_1.0_pid_1000417_0",
       "censored": true,
       "time_to_event": 1,
@@ -369,7 +369,7 @@
       "methods": ["ct", "centime", "eigencam", "centime_beta1", "centime_beta0"]
     },
     {
-      "id": "pid_1002471",
+      "id": "pid_1002471_1",
       "folder": "cens_time_1.0_pid_1002471_1",
       "censored": true,
       "time_to_event": 1,
@@ -377,7 +377,7 @@
       "methods": ["ct", "centime_beta0", "eigencam", "centime_beta1", "centime"]
     },
     {
-      "id": "pid_1000214",
+      "id": "pid_1000214_0",
       "folder": "cens_time_2.0_pid_1000214_0",
       "censored": true,
       "time_to_event": 2,
@@ -385,7 +385,7 @@
       "methods": ["ct", "centime_beta0", "centime_beta1", "eigencam", "centime"]
     },
     {
-      "id": "pid_1000948",
+      "id": "pid_1000948_0",
       "folder": "cens_time_3.0_pid_1000948_0",
       "censored": true,
       "time_to_event": 3,
@@ -393,7 +393,7 @@
       "methods": ["ct", "centime_beta0", "centime_beta1", "centime", "eigencam"]
     },
     {
-      "id": "pid_574509",
+      "id": "pid_574509_1",
       "folder": "cens_time_9.0_pid_574509_1",
       "censored": true,
       "time_to_event": 9,
@@ -401,7 +401,7 @@
       "methods": ["ct", "centime", "centime_beta0", "centime_beta1", "eigencam"]
     },
     {
-      "id": "pid_931811",
+      "id": "pid_931811_1",
       "folder": "cens_time_9.0_pid_931811_1",
       "censored": true,
       "time_to_event": 9,
@@ -409,7 +409,7 @@
       "methods": ["ct", "centime_beta0", "centime_beta1", "centime", "eigencam"]
     },
     {
-      "id": "pid_1000278",
+      "id": "pid_1000278_0",
       "folder": "cens_time_10.0_pid_1000278_0",
       "censored": true,
       "time_to_event": 10,
@@ -417,7 +417,7 @@
       "methods": ["ct", "centime_beta1", "centime_beta0", "eigencam", "centime"]
     },
     {
-      "id": "pid_1002376",
+      "id": "pid_1002376_3",
       "folder": "cens_time_10.0_pid_1002376_3",
       "censored": true,
       "time_to_event": 10,
@@ -425,7 +425,7 @@
       "methods": ["ct", "eigencam", "centime", "centime_beta1", "centime_beta0"]
     },
     {
-      "id": "pid_702119",
+      "id": "pid_702119_1",
       "folder": "cens_time_11.0_pid_702119_1",
       "censored": true,
       "time_to_event": 11,
@@ -433,7 +433,7 @@
       "methods": ["ct", "centime", "centime_beta1", "centime_beta0", "eigencam"]
     },
     {
-      "id": "pid_1000438",
+      "id": "pid_1000438_0",
       "folder": "cens_time_11.0_pid_1000438_0",
       "censored": true,
       "time_to_event": 11,
@@ -441,7 +441,7 @@
       "methods": ["ct", "centime_beta1", "eigencam", "centime", "centime_beta0"]
     },
     {
-      "id": "pid_739214",
+      "id": "pid_739214_0",
       "folder": "uncens_time_24.0_pid_739214_0",
       "censored": false,
       "time_to_event": 24,
@@ -449,7 +449,7 @@
       "methods": ["ct", "eigencam", "centime", "centime_beta1", "centime_beta0"]
     },
     {
-      "id": "pid_1001181",
+      "id": "pid_1001181_0",
       "folder": "uncens_time_27.0_pid_1001181_0",
       "censored": false,
       "time_to_event": 27,
@@ -457,7 +457,7 @@
       "methods": ["ct", "eigencam", "centime_beta1", "centime", "centime_beta0"]
     },
     {
-      "id": "pid_735635",
+      "id": "pid_735635_1",
       "folder": "uncens_time_29.0_pid_735635_1",
       "censored": false,
       "time_to_event": 29,
@@ -465,7 +465,7 @@
       "methods": ["ct", "centime_beta1", "centime_beta0", "centime", "eigencam"]
     },
     {
-      "id": "pid_183030",
+      "id": "pid_183030_1",
       "folder": "uncens_time_35.0_pid_183030_1",
       "censored": false,
       "time_to_event": 35,
@@ -473,7 +473,7 @@
       "methods": ["ct", "centime_beta0", "eigencam", "centime", "centime_beta1"]
     },
     {
-      "id": "pid_1001199",
+      "id": "pid_1001199_0",
       "folder": "uncens_time_35.0_pid_1001199_0",
       "censored": false,
       "time_to_event": 35,
